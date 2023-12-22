@@ -8,8 +8,8 @@ from pathlib import Path
 
 class FakeUserGenerator:
     fake = Faker()
-    def generate_random_user(cls):
-        profile =  cls.fake.profile(fields=["name", "username", "mail", "sex", "address"]) 
+    def generate_random_user(self):
+        profile =  self.fake.profile(fields=["name", "username", "mail", "sex", "address"]) 
         return RandomUser(**(profile | {"age": random.randint(10,80)}))
     
 class EnvironmentVariables:
