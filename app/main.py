@@ -24,7 +24,7 @@ def random_users(db: Session = Depends(get_db)) -> schemas.RandomUserJsonOutput:
     if MIN_N >= MAX_N:
         raise HTTPException(status_code=400,
                             detail="Upper bound for N must be greater than the lower bound, change your .env file")
-    elif MIN_N or MAX_N < 0:
+    elif MIN_N < 0 or MAX_N < 0:
         raise HTTPException(status_code=400, detail="MIN_N, MAX_N must be greater than 0, change your .env file")
 
     N = random.randint(MIN_N, MAX_N)
